@@ -1,32 +1,39 @@
 import java.util.*
 
 fun main(args: Array<String>) {
-    var fortune = ""
+//    var fortune = ""
 
     /**
      * var 1.
      */
-    repeat(10) {
-        fortune = getFortune(getBirthday())
-
-        println("\nYour fortune is: $fortune")
-
-        if (fortune.contains("Take it easy")) return
-    }
+//    repeat(10) {
+//        fortune = getFortune(getBirthday())
+//
+//        println("\nYour fortune is: $fortune")
+//
+//        if (fortune.contains("Take it easy")) return
+//    }
 
     /**
      * var 2.
      */
-    while (!fortune.contains("Take it easy")) {
-        fortune = getFortune(getBirthday())
-
-        println("\nYour fortune is: $fortune")
-    }
+//    while (!fortune.contains("Take it easy")) {
+//        fortune = getFortune(getBirthday())
+//
+//        println("\nYour fortune is: $fortune")
+//    }
 
 //    println(canAddFish(10.0, listOf(3, 3, 3)))
 //    println(canAddFish(8.0, listOf(2, 2, 2), hasDecorations = false))
 //    println(canAddFish(9.0, listOf(1, 1, 3), 3))
 //    println(canAddFish(10.0, listOf(), 7, true))
+
+    gamePlay(rollDice3(4))
+    gamePlay(rollDice3(0))
+}
+
+fun gamePlay(diceRoll: Int) {
+    println(diceRoll)
 }
 
 fun canAddFish(
@@ -105,3 +112,18 @@ fun dayOfWeek() {
     }
 
 }
+
+val rollDice = { Random().nextInt(12) + 1 }
+
+val rollDice2 = { sides: Int -> Random().nextInt(sides) + 1 }
+
+val rollDice0 = { sides: Int ->
+    if (sides == 0) 0
+    else Random().nextInt(sides) + 1
+}
+
+val rollDice3: (Int) -> Int = { sides ->
+    if (sides == 0) 0
+    else Random().nextInt(sides) + 1
+}
+

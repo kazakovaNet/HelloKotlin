@@ -17,7 +17,7 @@ fun eagerExample() {
     println(filtered.toList())
 
     // apply map lazily
-    val lazyMap=decorations.asSequence().map {
+    val lazyMap = decorations.asSequence().map {
         println("map: $it")
         it
     }
@@ -28,6 +28,22 @@ fun eagerExample() {
 }
 
 fun getDirtySensorReading() = 20
+
+var dirty = 20
+
+val waterFilter: (Int) -> Int = { dirty -> dirty / 2 }
+
+fun feedFish(dirty: Int) = dirty + 10
+
+fun updateDirty(dirty: Int, operation: (Int) -> Int): Int {
+    return operation(dirty)
+}
+
+fun dirtyProcessor() {
+    dirty = updateDirty(dirty, waterFilter)
+    dirty = updateDirty(dirty, ::feedFish)
+    dirty = updateDirty(dirty) { dirty -> dirty + 50 }
+}
 
 fun shouldChangeWater(
         day: String,
@@ -57,6 +73,9 @@ fun feedTheFish() {
     if (shouldChangeWater(day)) {
         println("Change the water today")
     }
+
+    // call dirty processor
+    dirtyProcessor()
 }
 
 fun fishFood(day: String): String {
