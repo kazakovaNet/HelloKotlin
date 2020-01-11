@@ -1,6 +1,8 @@
 package spice
 
-abstract class Spice(val name: String, val spiciness: String = "mild", color: SpiceColor): SpiceColor by color {
+import Color
+
+sealed class Spice(val name: String, val spiciness: String = "mild", color: SpiceColor): SpiceColor by color {
     val heat: Int
         get() = when (spiciness) {
             "mild" -> 1
@@ -38,11 +40,11 @@ interface Grinder {
 }
 
 interface SpiceColor {
-    val color: String
+    val color: Color
 }
 
 object YellowSpiceColor : SpiceColor {
-    override val color = "yellow"
+    override val color = Color.YELLOW
 }
 
 //fun makeSalt() = Spice("salt")
