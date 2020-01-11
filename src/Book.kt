@@ -1,6 +1,6 @@
 open class Book(val title: String, val author: String) {
 
-    var currentPage = 1
+    private var currentPage = 1
 
     open fun readPage() {
         currentPage++

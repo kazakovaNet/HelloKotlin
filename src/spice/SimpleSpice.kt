@@ -6,3 +6,8 @@ class SimpleSpice {
     val heat: Int
         get() = 5
 }
+
+fun main(args: Array<String>) {
+    val simpleSpice = SimpleSpice()
+    println("${simpleSpice.name} ${simpleSpice.heat}\n")
+}
