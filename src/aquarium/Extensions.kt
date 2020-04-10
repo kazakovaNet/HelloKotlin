@@ -37,6 +37,35 @@ fun extensionsExample() {
     nullPlant.pull() // ok
 }
 
+open class Shape
+
+class Rectangle : Shape()
+
+fun Shape.getName() = "Shape"
+
+fun Rectangle.getName() = "Rectangle"
+
+fun printClassName(s: Shape) {
+    println(s.getName())
+}
+
+class Example {
+    fun printFunctionType() {
+        println("Class method")
+    }
+}
+
+fun Example.printFunctionType() {
+    println("Extension function")
+}
+
+fun Example.printFunctionType(i:Int){
+    println("Extension function")
+}
+
 fun main(args: Array<String>) {
-    extensionsExample()
+//    extensionsExample()
+//    printClassName(Rectangle()) // Shape
+    Example().printFunctionType() // Class method
+    Example().printFunctionType(1) // Extension function
 }
